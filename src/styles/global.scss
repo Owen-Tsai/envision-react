@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+  font-size: var(--fontSize);
+  height: 100%;
+  width: 100%;
+}
+
+html, #root {
+  height: 100%;
+}
+
+// Alibaba PuHuiTi
+@font-face {
+  font-family: "TitleFont";
+  font-weight: 1000;
+  src: url("//at.alicdn.com/wf/webfont/IgTWJflk7Y23/M5S2wQf9WoJt.woff2") format("woff2"),
+  url("//at.alicdn.com/wf/webfont/IgTWJflk7Y23/aRBVxxNZwv4m.woff") format("woff");
+  font-display: swap;
+}
+
+// theme

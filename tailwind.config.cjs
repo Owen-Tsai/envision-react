@@ -2,7 +2,10 @@
 export default {
   content: ['./src/**/*.{tsx, scss}'],
   theme: {
-    extend: {},
+    colors: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
 }
