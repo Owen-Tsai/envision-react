@@ -1,6 +1,6 @@
 import { theme } from 'antd'
 import { createPortal } from 'react-dom'
-import { useSelector } from '@/hooks/use-store.ts'
+import { useSelector } from '@/hooks/use-store'
 
 const { getDesignToken } = theme
 

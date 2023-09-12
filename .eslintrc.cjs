@@ -47,6 +47,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'semi': 'off',
     'no-console': 'off',
+    'import/extensions': 'off',
   },
   overrides: [
     {

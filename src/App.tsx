@@ -1,9 +1,22 @@
-function App() {
+import { ConfigProvider, theme, App as AntApp } from 'antd'
+import { RouterProvider } from 'react-router-dom'
+import { useSelector } from '@/hooks/use-store'
+import router from '@/routes/index.tsx'
+
+export default function App() {
+  const mode = useSelector((state) => state.theme.value)
+  const algorithm =
+    mode === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
+
   return (
-    <>
-      <h1 className="text-blue-600 text-3xl font-bold">HelloWorld</h1>
-    </>
+    <ConfigProvider
+      theme={{
+        algorithm,
+      }}
+    >
+      <AntApp className={`theme-${mode} h-full`}>
+        <RouterProvider router={router} />
+      </AntApp>
+    </ConfigProvider>
   )
 }
-
-export default App
