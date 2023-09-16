@@ -3,6 +3,8 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import cn from 'classnames'
 import { useLocalStorageState } from 'ahooks'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import qs from 'query-string'
 import { useDispatch } from '@/hooks/use-store'
 import { login, getUserInfo, type LoginData } from '@/api/user'
 import { setUserInfo, setToken } from '@/store/user'
@@ -26,6 +28,10 @@ export default function LoginForm(props: Props) {
   )
   const [messageApi, contextHolder] = message.useMessage()
   const dispatch = useDispatch()
+  const [params] = useSearchParams()
+  const navigate = useNavigate()
+
+  const { redirectTo } = qs.parse(params as unknown as string)
 
   const handlePostLogin = async (token: string) => {
     // TODO: get userInfo via token
@@ -48,9 +54,13 @@ export default function LoginForm(props: Props) {
       const { token } = res.data
       console.log('token is', token)
       messageApi.success('登录成功')
-      handlePostLogin(token)
-      // TODO: check for redirect param
-      //       and navigate to the workplace
+      await handlePostLogin(token)
+      console.log(redirectTo)
+      if (redirectTo) {
+        navigate(redirectTo as string)
+      } else {
+        navigate('/dashboard')
+      }
     } catch (err) {
       setErrorMsg((err as Error).message)
     } finally {

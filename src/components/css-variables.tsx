@@ -110,7 +110,5 @@ export default function CssVariables() {
     --motionDurationSlow: ${token.motionDurationSlow};
 }`
 
-  console.log(css)
-
   return createPortal(<style>{css}</style>, document.head, 'cssVar')
 }

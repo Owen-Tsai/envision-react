@@ -20,3 +20,15 @@ export type EMenuItem = MenuItem & {
   icon?: React.ReactNode
   children?: EMenuItem[]
 }
+
+export type RouteMeta = {
+  title?: string
+  auth?: boolean
+}
+
+export type ERouteObject = {
+  element: JSX.Element
+  path: string
+  children?: ERouteObject[]
+  meta?: RouteMeta
+}
