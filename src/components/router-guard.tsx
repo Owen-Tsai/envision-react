@@ -9,13 +9,11 @@ export default function RouterGuard({
   meta: RouteMeta | undefined
   children: JSX.Element
 }) {
-  console.log(meta)
   if (meta?.title) {
     document.title = meta.title
   }
 
   if (!!meta?.auth && !isAuthed()) {
-    console.log(isAuthed())
     return <Navigate to="/login" replace />
   }
 
