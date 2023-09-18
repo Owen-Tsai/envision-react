@@ -8,6 +8,7 @@ import qs from 'query-string'
 import { useDispatch } from '@/hooks/use-store'
 import { login, getUserInfo, type LoginData } from '@/api/user'
 import { setUserInfo, setToken } from '@/store/user'
+import { setToken as storeToken } from '@/utils/auth'
 
 type Props =
   | {
@@ -34,9 +35,8 @@ export default function LoginForm(props: Props) {
   const { redirectTo } = qs.parse(params as unknown as string)
 
   const handlePostLogin = async (token: string) => {
-    // TODO: get userInfo via token
-    // save both token and userInfo
     dispatch(setToken(token))
+    storeToken(token)
     try {
       const userInfo = (await getUserInfo()).data
       dispatch(setUserInfo(userInfo))
@@ -55,7 +55,6 @@ export default function LoginForm(props: Props) {
       console.log('token is', token)
       messageApi.success('登录成功')
       await handlePostLogin(token)
-      console.log(redirectTo)
       if (redirectTo) {
         navigate(redirectTo as string)
       } else {

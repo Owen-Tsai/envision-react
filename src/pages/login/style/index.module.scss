@@ -6,6 +6,7 @@
   background: url('../../../assets/bg-login.png') top center no-repeat;
   background-size: 100%;
   background-attachment: fixed;
+  background-color: var(--colorBgContainer);
   @include flex-col();
 }
 
