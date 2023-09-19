@@ -1,0 +1,36 @@
+@use '@/styles/mixins.scss' as *;
+
+.user-section {
+  @include flex-between;
+  background-color: var(--colorBgContainer);
+  border-bottom: 1px solid var(--colorBorderSecondary);
+  padding: 24px 40px;
+}
+
+.user-info {
+  @include flex-center-v;
+  gap: 16px;
+  $size: 64px;
+  img {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+  }
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.job-title {
+  color: var(--colorTextSecondary);
+}
+
+.statistics {
+  @include flex-center-v;
+  gap: 16px;
+}
+
+.divider {
+  border-left: 1px solid var(--colorBorder);
+}

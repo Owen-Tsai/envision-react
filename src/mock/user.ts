@@ -1,14 +1,13 @@
 import Mock from 'mockjs'
 import setupMock, { failedResponseWrap, responseWrap } from '@/utils/mock'
-import store from '@/store/index'
 import avatar from '@/assets/avatar.jpg'
+import { getToken } from '@/utils/auth'
 import type { MockParams } from '@/types/index'
 import type { UserInfo } from '@/types/user'
 
 setupMock({
   setup() {
     Mock.mock('/api/user/login', (params: MockParams) => {
-      console.log('mock got', params)
       const { username, password } = JSON.parse(params.body)
       if (!username) {
         return failedResponseWrap(null, '请填写用户名', 400)
@@ -34,8 +33,7 @@ setupMock({
     })
 
     Mock.mock('/api/user/info', 'get', () => {
-      // simulate fetch token from request headers
-      const { token } = store.getState().user
+      const token = getToken()
       if (token !== null) {
         return responseWrap<UserInfo>({
           username: '蔡仲晨',
