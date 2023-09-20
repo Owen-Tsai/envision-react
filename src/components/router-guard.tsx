@@ -13,7 +13,7 @@ export default function RouterGuard({
     document.title = meta.title
   }
 
-  if (!!meta?.auth && !isAuthed()) {
+  if (!isAuthed()) {
     return <Navigate to="/login" replace />
   }
 

@@ -1,6 +1,5 @@
-import { MenuProps } from 'antd'
-
-type MenuItem = Required<MenuProps>['items'][number]
+export * from './route'
+export * from './user'
 
 export type MockParams = {
   url: string
@@ -13,22 +12,4 @@ export type HTTPResponse = {
   msg?: string
   data: Record<string, unknown>
   success: boolean
-}
-
-export type EMenuItem = MenuItem & {
-  iconName?: string
-  icon?: React.ReactNode
-  children?: EMenuItem[]
-}
-
-export type RouteMeta = {
-  title?: string
-  auth?: boolean
-}
-
-export type ERouteObject = {
-  element: JSX.Element
-  path: string
-  children?: ERouteObject[]
-  meta?: RouteMeta
 }

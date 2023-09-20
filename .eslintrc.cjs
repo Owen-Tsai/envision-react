@@ -48,6 +48,7 @@ module.exports = {
     'semi': 'off',
     'no-console': 'off',
     'import/extensions': 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
   overrides: [
     {
