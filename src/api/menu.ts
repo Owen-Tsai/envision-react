@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { EMenuItem } from '@/types'
+import { ERemoteMenuItem } from '@/types'
 
 export type MenuRes = {
-  menu: EMenuItem[]
+  menu: ERemoteMenuItem[]
 }
 
 export const getMenu = () => axios.get<MenuRes>('/api/menu')

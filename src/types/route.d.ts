@@ -37,3 +37,10 @@ export type EMenuItem = {
   icon?: JSX.Element
   children?: EMenuItem[]
 }
+
+export type ERemoteMenuItem = {
+  label: string
+  key: string
+  iconName?: string
+  children?: ERemoteMenuItem[]
+}

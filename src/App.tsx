@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ConfigProvider, theme, App as AntApp } from 'antd'
 import { useRoutes } from 'react-router-dom'
 import { useSelector, useDispatch } from '@/hooks/use-store'
@@ -5,9 +6,9 @@ import { routes } from '@/routes'
 import { isAuthed } from '@/utils/auth'
 import { getUserInfo } from '@/api/user'
 import { setUserInfo } from '@/store/user'
-import { useEffect } from 'react'
 
 export default function App() {
+  const [loading, setLoading] = useState(false)
   const mode = useSelector((state) => state.theme.value)
   const userInfo = useSelector((state) => state.user.userInfo)
   const algorithm =
@@ -19,13 +20,17 @@ export default function App() {
 
   useEffect(() => {
     if (authenticated && !userInfo) {
+      setLoading(true)
       getUserInfo().then((res) => {
         dispatch(setUserInfo(res.data))
+        setLoading(false)
       })
     }
   }, [authenticated, dispatch, userInfo])
 
-  return (
+  return loading ? (
+    <></>
+  ) : (
     <ConfigProvider
       theme={{
         algorithm,
