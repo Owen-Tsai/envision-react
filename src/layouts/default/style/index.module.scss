@@ -1,5 +1,8 @@
 @use '@/styles/mixins.scss' as *;
 
+$sider-width: 240px;
+$header-height: 56px;
+
 .layout {
   height: 100%;
 }
@@ -7,10 +10,13 @@
 .header {
   background: unset;
   padding: 0 16px;
-  height: 56px;
+  height: $header-height;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--colorBorderSecondary);
   @include flex-between;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .header-light {
@@ -30,7 +36,10 @@
 .sider {
   // background-color: var(--colorBgContainer) !important;
   background-color: transparent !important;
-  position: relative;
+  height: calc(100vh - $header-height);
+  position: sticky !important;
+  left: 0;
+  top: $header-height;
 }
 
 .collapse-fab {

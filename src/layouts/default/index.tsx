@@ -84,7 +84,7 @@ export default function DefaultLayout() {
           <Button type="text" icon={<BellOutlined />} />
         </div>
       </Header>
-      <Layout hasSider className="h-full">
+      <Layout className="h-full">
         <Sider
           width={240}
           collapsible
