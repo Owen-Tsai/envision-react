@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ConfigProvider, theme, App as AntApp } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
 import { useRoutes } from 'react-router-dom'
 import { useSelector, useDispatch } from '@/hooks/use-store'
 import { routes } from '@/routes'
@@ -35,6 +36,7 @@ export default function App() {
       theme={{
         algorithm,
       }}
+      locale={zhCN}
     >
       <AntApp className={`theme-${mode} h-full`}>{router}</AntApp>
     </ConfigProvider>

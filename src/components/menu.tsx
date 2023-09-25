@@ -10,6 +10,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { menu as staticMenu } from '@/routes'
 import { getMenu } from '@/api/menu'
 import { MenuItem, ERemoteMenuItem } from '@/types'
+import style from '@/styles/menu.module.scss'
 import config from '../../config.json'
 
 const iconDom = (iconName: string): JSX.Element => {
@@ -80,7 +81,7 @@ export default function Menu() {
   }
 
   return loading ? (
-    <div className="flex flex-col gap-2 h-full bg-[#fff] p-6">
+    <div className={style.loading}>
       {Array.from({ length: 5 }, (_, i) => (
         <Skeleton.Input
           className="!w-full max-w-full"

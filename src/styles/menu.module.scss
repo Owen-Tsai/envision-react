@@ -1,0 +1,5 @@
+.loading {
+  @apply flex flex-col gap-2 h-full p-6;
+
+  background-color: var(--colorBgContainer);
+}
