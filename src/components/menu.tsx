@@ -2,27 +2,31 @@ import { Menu as AMenu, Skeleton } from 'antd'
 import {
   AppstoreOutlined,
   DeploymentUnitOutlined,
-  CodeSandboxOutlined,
   SettingOutlined,
+  TeamOutlined,
+  ContainerOutlined,
+  ApartmentOutlined,
 } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { menu as staticMenu } from '@/routes'
 import { getMenu } from '@/api/menu'
 import { MenuItem, ERemoteMenuItem } from '@/types'
 import style from '@/styles/menu.module.scss'
-import config from '../../config.json'
 
 const iconDom = (iconName: string): JSX.Element => {
   switch (iconName) {
     case 'dashboard':
       return <AppstoreOutlined />
-    case 'org':
+    case 'team':
+      return <TeamOutlined />
+    case 'material':
       return <DeploymentUnitOutlined />
-    case 'project':
-      return <CodeSandboxOutlined />
     case 'setting':
       return <SettingOutlined />
+    case 'archive':
+      return <ContainerOutlined />
+    case 'org':
+      return <ApartmentOutlined />
     default:
       return <></>
   }
@@ -59,16 +63,12 @@ export default function Menu() {
   }, [pathname])
 
   useEffect(() => {
-    if (config.menuType === 'static') {
-      setMenu(staticMenu)
-    } else {
-      setLoading(true)
-      getMenu().then((res) => {
-        const { menu: remoteMenu } = res.data
-        setMenu(transformMenu(remoteMenu))
-        setLoading(false)
-      })
-    }
+    setLoading(true)
+    getMenu().then((res) => {
+      const { menu: remoteMenu } = res.data
+      setMenu(transformMenu(remoteMenu))
+      setLoading(false)
+    })
   }, [])
 
   const navigateTo = (key: string) => {

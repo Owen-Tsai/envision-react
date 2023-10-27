@@ -13,34 +13,34 @@ setupMock({
             key: '/dashboard',
           },
           {
-            iconName: 'org',
-            label: '组织结构',
-            key: '/org',
+            iconName: 'team',
+            label: '我的团队',
+            key: '/team',
             children: [
               {
-                label: '部门管理',
-                key: '/org/department',
+                label: '肉夹馍研发团队',
+                key: '/team/12',
               },
               {
-                label: '成员管理',
-                key: '/org/mamber',
-              },
-              {
-                label: '角色管理',
-                key: '/org/role',
+                label: '芝士炸鸡口味团队',
+                key: '/team/13',
               },
             ],
           },
           {
-            iconName: 'project',
-            label: '项目管理',
-            key: 'project',
-            children: [
-              {
-                label: '项目列表',
-                key: '/project',
-              },
-            ],
+            iconName: 'archive',
+            label: '已归档文件',
+            key: 'archive',
+          },
+          {
+            iconName: 'material',
+            label: '物料市场',
+            key: 'material',
+          },
+          {
+            iconName: 'org',
+            label: '组织架构',
+            key: '/org',
           },
           {
             iconName: 'setting',
