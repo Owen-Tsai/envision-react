@@ -1,5 +1,5 @@
-import { Layout, Button } from 'antd'
-import { BellOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons'
+import { Layout, Button, Tooltip } from 'antd'
+import { LogoutOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import cn from 'classnames'
@@ -26,7 +26,7 @@ export default function DefaultLayout() {
   }
 
   const themeBtnIcon =
-    currentTheme === 'dark' ? (
+    currentTheme === 'light' ? (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -74,14 +74,18 @@ export default function DefaultLayout() {
         </div>
 
         <div className={style.actions}>
-          <Button
-            type="text"
-            onClick={toggleDarkMode}
-            className="ant-btn-icon-only"
-          >
-            <span className="anticon anticon-bell">{themeBtnIcon}</span>
-          </Button>
-          <Button type="text" icon={<BellOutlined />} />
+          <Tooltip title={currentTheme === 'dark' ? '浅色主题' : '深色主题'}>
+            <Button
+              type="text"
+              onClick={toggleDarkMode}
+              className="ant-btn-icon-only"
+            >
+              <span className="anticon anticon-bell">{themeBtnIcon}</span>
+            </Button>
+          </Tooltip>
+          <Tooltip title="注销登录">
+            <Button type="text" icon={<LogoutOutlined />} />
+          </Tooltip>
         </div>
       </Header>
       <Layout className="h-full">

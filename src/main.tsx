@@ -7,6 +7,7 @@ import CssVariables from '@/components/css-variables.tsx'
 import dayjs from 'dayjs'
 import weekday from 'dayjs/plugin/weekday'
 import localeData from 'dayjs/plugin/localeData'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import App from './App.tsx'
 import './styles/global.scss'
 import 'dayjs/locale/zh-cn'
@@ -17,6 +18,7 @@ import '@/api/index'
 dayjs.locale('zh-cn')
 dayjs.extend(weekday)
 dayjs.extend(localeData)
+dayjs.extend(relativeTime)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
