@@ -1,5 +1,6 @@
 export * from './route'
 export * from './user'
+export * from './file'
 
 export type MockParams = {
   url: string

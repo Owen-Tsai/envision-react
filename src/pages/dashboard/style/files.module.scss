@@ -1,0 +1,44 @@
+@use './common.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.entry {
+  .subtext {
+    span, a {
+      color: var(--colorTextSecondary);
+    }
+
+    a:hover {
+      color: var(--colorText);
+    }
+  }
+
+  .title {
+    @apply my-1;
+    @include flex-between;
+    font-size: var(--fontSizeLG);
+    font-weight: 700;
+  }
+
+  .user {
+    @apply mt-2;
+    div {
+      @include flex-center-v;
+      @apply mt-1;
+    }
+    .content {
+      @include flex-center-v;
+    }
+
+    .label {
+      @apply mr-2;
+      color: var(--colorTextSecondary);
+    }
+  }
+  .footer {
+    @apply mt-4 flex items-center justify-between;
+    .time {
+      @apply text-right;
+      color: var(--colorTextTertiary);
+    }
+  }
+}
