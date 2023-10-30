@@ -1,4 +1,3 @@
-import { useState, useMemo } from 'react'
 import cn from 'classnames'
 import { CheckOutlined } from '@ant-design/icons'
 import style from './style.module.scss'
