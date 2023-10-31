@@ -1,0 +1,54 @@
+@use '@/styles/mixins.scss' as *;
+
+.header {
+  @include flex-between;
+  background-color: var(--colorBgContainer);
+  border-bottom: 1px solid var(--colorBorderSecondary);
+  padding: 24px 40px;
+}
+
+.info {
+  @include flex-center-v;
+  gap: 16px;
+  $size: 64px;
+  img {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+  }
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.job {
+  color: var(--colorTextSecondary);
+}
+
+.action {
+  @apply flex items-center gap-4 px-4 py-2 rounded-md cursor-pointer relative;
+  border: 1px solid var(--colorBorderSecondary);
+  // background-color: var(--colorFillTertiary);
+  width: 250px;
+  transition: border-color .2s, background-color .2s;
+  @include cubic-bezier;
+
+  img {
+    @include size(40px);
+  }
+  span {
+    color: var(--colorTextSecondary);
+    font-size: 12px;
+  }
+
+  &:hover {
+    // border-color: var(--colorPrimaryText);
+    background-color: var(--colorFillTertiary);
+  }
+
+  svg {
+    @apply absolute right-4 top-1/2 -translate-y-1/2;
+    @include size(16px);
+  }
+}

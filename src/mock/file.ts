@@ -97,6 +97,7 @@ setupMock({
             ],
             time: Random.datetime('MM-dd'),
             type: '视图',
+            desc: '一个测试页面，用来测试低代码开发平台的正确性以及更好地展示文件',
           },
           {
             title: '岗位发布表单',

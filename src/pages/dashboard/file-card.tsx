@@ -1,7 +1,7 @@
 import { Card, Tag, Tooltip, Avatar } from 'antd'
 import cn from 'classnames'
 import dayjs from 'dayjs'
-import { QuestionCircleOutlined } from '@ant-design/icons'
+import { QuestionCircleOutlined, MoreOutlined } from '@ant-design/icons'
 import { IFile, UserAvatarInfo } from '@/types'
 import style from './style/files.module.scss'
 
@@ -52,7 +52,10 @@ export default function FileCard({
         {item.title}
         {item.desc ? (
           <Tooltip placement="top" title={item.desc}>
-            <QuestionCircleOutlined />
+            <QuestionCircleOutlined
+              size={14}
+              style={{ fontSize: '14px', color: 'var(--colorTextSecondary)' }}
+            />
           </Tooltip>
         ) : (
           <></>

@@ -22,4 +22,17 @@ body {
   font-display: swap;
 }
 
-// theme
+// override
+.g2-tooltip {
+  background-color: rgba(#fff, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 6px !important;
+}
+#hide-border-bottom {
+  .ant-tabs-nav::before {
+    border-bottom: 0;
+  }
+  .ant-tabs-tab {
+    padding-bottom: 8px;
+  }
+}
