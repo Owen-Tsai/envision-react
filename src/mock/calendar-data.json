@@ -1,7 +1,7 @@
 [
   {
     "date": "2023-07-02",
-    "commits": 1,
+    "commits": 0,
     "month": 6,
     "day": 0,
     "week": "9"
@@ -645,7 +645,7 @@
   },
   {
     "date": "2023-09-29",
-    "commits": 1,
+    "commits": 0,
     "month": 8,
     "day": 5,
     "week": "21",
@@ -661,14 +661,14 @@
   },
   {
     "date": "2023-10-01",
-    "commits": 1,
+    "commits": 0,
     "month": 9,
     "day": 0,
     "week": "22"
   },
   {
     "date": "2023-10-02",
-    "commits": 1,
+    "commits": 0,
     "month": 9,
     "day": 1,
     "week": "22"
@@ -710,14 +710,14 @@
   },
   {
     "date": "2023-10-08",
-    "commits": 1,
+    "commits": 0,
     "month": 9,
     "day": 0,
     "week": "23"
   },
   {
     "date": "2023-10-09",
-    "commits": 1,
+    "commits": 0,
     "month": 9,
     "day": 1,
     "week": "23"
@@ -738,7 +738,7 @@
   },
   {
     "date": "2023-10-12",
-    "commits": 1,
+    "commits": 0,
     "month": 9,
     "day": 4,
     "week": "23"
