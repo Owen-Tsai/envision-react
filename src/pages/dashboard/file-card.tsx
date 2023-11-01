@@ -1,4 +1,4 @@
-import { Card, Tag, Tooltip, Avatar } from 'antd'
+import { Card, Tag, Tooltip, Avatar, Dropdown, type MenuProps } from 'antd'
 import cn from 'classnames'
 import dayjs from 'dayjs'
 import { QuestionCircleOutlined, MoreOutlined } from '@ant-design/icons'
@@ -14,6 +14,49 @@ const genUserAvatar = (user: UserAvatarInfo) => {
     </Avatar>
   )
 }
+
+const menu: MenuProps['items'] = [
+  {
+    key: 'open',
+    label: (
+      <a target="_blank" href="#">
+        打开
+      </a>
+    ),
+  },
+  {
+    key: 'rename',
+    label: <div>重命名</div>,
+  },
+  {
+    key: 'move',
+    label: '移动至...',
+    children: [
+      {
+        key: 'individual',
+        label: <div>个人</div>,
+      },
+      {
+        key: 'team1',
+        label: <div>肉夹馍研发团队</div>,
+      },
+      {
+        key: 'team2',
+        label: <div>芝士炸鸡口味团队</div>,
+      },
+      {
+        key: 'team3',
+        label: <div>生酪拿铁迭代团队</div>,
+      },
+    ],
+  },
+  { type: 'divider' },
+  {
+    key: 'remove',
+    label: <div>移除</div>,
+    danger: true,
+  },
+]
 
 export default function FileCard({
   item,
@@ -46,39 +89,45 @@ export default function FileCard({
   )
 
   return (
-    <Card className={cn(style.entry, className)} bordered={false}>
-      <div className={style.subtext}>{subText}</div>
-      <div className={style.title}>
-        {item.title}
-        {item.desc ? (
-          <Tooltip placement="top" title={item.desc}>
-            <QuestionCircleOutlined
-              size={14}
-              style={{ fontSize: '14px', color: 'var(--colorTextSecondary)' }}
-            />
-          </Tooltip>
-        ) : (
-          <></>
-        )}
-      </div>
+    <Dropdown menu={{ items: menu }} trigger={['contextMenu']}>
+      <Card
+        className={cn(style.entry, className)}
+        bordered={false}
+        tabIndex={0}
+      >
+        <div className={style.subtext}>{subText}</div>
+        <div className={style.title}>
+          {item.title}
+          {item.desc ? (
+            <Tooltip placement="top" title={item.desc}>
+              <QuestionCircleOutlined
+                size={14}
+                style={{ fontSize: '14px', color: 'var(--colorTextSecondary)' }}
+              />
+            </Tooltip>
+          ) : (
+            <></>
+          )}
+        </div>
 
-      <div className={style.user}>
-        <div>
-          <span className={style.label}>创建人</span>
-          <span className={style.content}>{initiator}</span>
+        <div className={style.user}>
+          <div>
+            <span className={style.label}>创建人</span>
+            <span className={style.content}>{initiator}</span>
+          </div>
+          <div>
+            <span className={style.label}>协作者</span>
+            <span className={style.content}>{collaborators}</span>
+          </div>
         </div>
-        <div>
-          <span className={style.label}>协作者</span>
-          <span className={style.content}>{collaborators}</span>
-        </div>
-      </div>
 
-      <div className={style.footer}>
-        <Tag>{item.type}</Tag>
-        <div className={style.time}>
-          编辑于 {dayjs(`2023-${item.time}`).fromNow()}
+        <div className={style.footer}>
+          <Tag>{item.type}</Tag>
+          <div className={style.time}>
+            编辑于 {dayjs(`2023-${item.time}`).fromNow()}
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </Dropdown>
   )
 }

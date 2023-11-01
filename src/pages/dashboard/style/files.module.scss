@@ -2,12 +2,13 @@
 @use '@/styles/mixins.scss' as *;
 
 .entry {
+  @apply cursor-pointer;
   .subtext {
-    span, a {
+    & > a, & > span {
       color: var(--colorTextSecondary);
     }
 
-    a:hover {
+    & > a:hover {
       color: var(--colorText);
     }
   }
@@ -40,5 +41,9 @@
       @apply text-right;
       color: var(--colorTextTertiary);
     }
+  }
+
+  &:focus {
+    outline: 2px solid var(--colorPrimaryText);
   }
 }
