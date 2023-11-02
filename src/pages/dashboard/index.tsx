@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react'
-import { Row, Col, Card, Tabs, Input, type TabsProps } from 'antd'
+import { useState } from 'react'
+import { Row, Col, Card, Tabs, Input, Space, type TabsProps } from 'antd'
 import Sticky from 'react-stickynode'
+import { useRequest } from 'ahooks'
 import { SearchOutlined } from '@ant-design/icons'
 import { getRecentFiles } from '@/api/file'
-import { IFile } from '@/types'
 import Header from './header'
 import FileCard from './file-card'
 import Calendar from './calendar'
+import StatCard from './stat-card'
 import style from './style/index.module.scss'
 
 const tabs: TabsProps['items'] = [
@@ -31,13 +32,8 @@ const tabs: TabsProps['items'] = [
 export default function Dashboard() {
   const [searchText, setSearchText] = useState('')
   const [category, setCategory] = useState('recent')
-  const [items, setItems] = useState<IFile[]>()
 
-  useEffect(() => {
-    getRecentFiles().then((res) => {
-      setItems(res.data.files)
-    })
-  }, [])
+  const { data } = useRequest(getRecentFiles)
 
   const search = (
     <Input
@@ -57,7 +53,7 @@ export default function Dashboard() {
         <Row gutter={24}>
           <Col span={16}>
             <Sticky
-              top={56}
+              top={64}
               innerActiveClass={style.shadow}
               innerClass={style.inner}
               innerZ={10}
@@ -77,12 +73,19 @@ export default function Dashboard() {
               </Card>
             </Sticky>
             <div className="grid grid-cols-3 gap-4 mt-4">
-              {items?.map((item, idx) => <FileCard item={item} key={idx} />)}
+              {data?.files.map((item, idx) => (
+                <FileCard item={item} key={idx} />
+              ))}
             </div>
           </Col>
 
           <Col span={8}>
-            <Calendar />
+            <Sticky top={64} innerZ={10}>
+              <Space direction="vertical" size={16} className="w-full">
+                <Calendar />
+                <StatCard />
+              </Space>
+            </Sticky>
           </Col>
         </Row>
       </section>

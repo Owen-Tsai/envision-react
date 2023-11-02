@@ -1,7 +1,7 @@
 import { Card, Tag, Tooltip, Avatar, Dropdown, type MenuProps } from 'antd'
 import cn from 'classnames'
 import dayjs from 'dayjs'
-import { QuestionCircleOutlined, MoreOutlined } from '@ant-design/icons'
+import { QuestionCircleOutlined } from '@ant-design/icons'
 import { IFile, UserAvatarInfo } from '@/types'
 import style from './style/files.module.scss'
 
