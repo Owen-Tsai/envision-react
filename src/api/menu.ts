@@ -5,4 +5,5 @@ export type MenuRes = {
   menu: ERemoteMenuItem[]
 }
 
-export const getMenu = () => axios.get<MenuRes>('/api/menu')
+export const getMenu = () =>
+  axios.get<MenuRes>('/api/menu').then((res) => res.data)

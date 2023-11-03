@@ -9,8 +9,9 @@ import {
 } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useRequest } from 'ahooks'
 import { getMenu } from '@/api/menu'
-import { MenuItem, ERemoteMenuItem } from '@/types'
+import { ERemoteMenuItem } from '@/types'
 import style from '@/styles/menu.module.scss'
 
 const iconDom = (iconName: string): JSX.Element => {
@@ -42,8 +43,6 @@ const transformMenu = (items: ERemoteMenuItem[]) => {
 }
 
 export default function Menu() {
-  const [loading, setLoading] = useState(false)
-  const [menu, setMenu] = useState<MenuItem[]>()
   const [path, setPath] = useState<string[]>([])
   const [expanded, setExpanded] = useState<string[]>([])
 
@@ -62,14 +61,7 @@ export default function Menu() {
     }
   }, [pathname])
 
-  useEffect(() => {
-    setLoading(true)
-    getMenu().then((res) => {
-      const { menu: remoteMenu } = res.data
-      setMenu(transformMenu(remoteMenu))
-      setLoading(false)
-    })
-  }, [])
+  const { data, loading } = useRequest(getMenu)
 
   const navigateTo = (key: string) => {
     // if (path[0] === key) return
@@ -92,7 +84,7 @@ export default function Menu() {
     </div>
   ) : (
     <AMenu
-      items={menu}
+      items={transformMenu(data ? data.menu : [])}
       mode="inline"
       selectedKeys={path}
       openKeys={expanded}
